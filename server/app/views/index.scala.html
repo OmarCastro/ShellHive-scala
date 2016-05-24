@@ -1,0 +1,32 @@
+@(message: String)(implicit environment: play.api.Environment)
+
+@main("Play with Scala.js") {
+<h2>Play and Scala.js share a same message</h2>
+<ul>
+  <li>Play shouts out: <em>@message</em></li>
+  <li>Scala.js shouts out: <em id="scalajsShoutOut"></em></li>
+  <input type="text" id="parserOutput"/>
+  <li> Parser shout out:  <em id="parserShoutOut"></em> </li>
+</ul>
+
+	<div class="parse-test">input: <span class="input" data-input="cat < file1.txt"></span> ::: result : <span class="result"></span> </div>
+	<div class="parse-test">input: <span class="input" data-input="cat > file1.txt"></span> ::: result : <span class="result"></span> </div>
+	<div class="parse-test">input: <span class="input" data-input="cat file1.txt"></span> ::: result : <span class="result"></span> </div>
+	<div class="parse-test">input: <span class="input" data-input="teste >(asd)"></span> ::: result : <span class="result"></span> </div>
+
+
+	<table>
+		<thead>
+			<tr><th>Input</th><th>Resulting Object</th><th>html</th><th>Object to commandLine</th></tr>
+		</thead>
+		<tbody>
+			<tr data-command="cat < file1.txt"></tr>
+			<tr data-command="cat > file1.txt"></tr>
+			<tr data-command="cat file1.txt"></tr>
+			<tr data-command="cat >(echo mimi)"></tr>
+			<tr data-command="cat file1.txt 2> file3.txt"></tr>
+			<tr data-command="cat file1.txt > file2.txt 2> file3.txt"></tr>
+		</tbody>
+	</table>
+
+}

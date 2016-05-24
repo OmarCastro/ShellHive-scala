@@ -1,17 +1,42 @@
-*.class
-*.log
-
-# sbt specific
-.cache
+logs
+project/project
+project/target
+target
+tmp
 .history
-.lib/
-dist/*
-target/
-lib_managed/
-src_managed/
-project/boot/
-project/plugins/project/
+dist
+.idea
+*.iml
+/out
+.idea_modules
+.classpath
+.project
+/RUNNING_PID
+.settings
+.DS_Store
+
+# hidden cross project folders
+shared/.js
+shared/.jvm
+
+# temp files
+.~*
+*~
+*.orig
+
+# eclipse
+.scala_dependencies
+.buildpath
+.cache
+.target
+bin/
 
 # Scala-IDE specific
 .scala_dependencies
-.worksheet
+.project
+.settings
+.cache-main
+.cache-tests
+
+#KDE dolphin specific
+.directory

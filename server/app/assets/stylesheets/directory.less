@@ -1,0 +1,42 @@
+.directory-manager {
+	padding-top: 2em;
+  z-index: 10;
+  background-color: #333;
+  color: white;
+  .icon{
+  	font-size: 4em;
+  }
+  .icon-container{
+  	margin: 0;
+  	padding-top: 10px;
+  	padding-bottom: 10px;
+  }
+  .icon-label{
+  	word-wrap: break-word;
+  }
+  .transfer-buttons{
+  	position: absolute;
+  	bottom: 1em;
+  	right: 1em;
+  	text-align: right;
+  }
+  .selected p{
+  	background-color: #555;
+  }
+  .upload{
+  	background: #3B5972;
+  	&:hover{
+  		color: white;
+	  	background: lighten(#3B5972, 13.5%);
+  	}
+  }
+
+  .download{
+  	background: #32853F;
+ 		color: white;
+  	&:hover{
+  		color: white;
+	  	background: lighten(#32853F, 13.5%);
+  	}
+  }
+}
