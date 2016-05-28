@@ -1,0 +1,16 @@
+@(message: String)(implicit environment: play.api.Environment)
+
+@main("Play with Scala.js") {
+
+
+
+<div ui-layout class="layout">
+	<div class="background">
+	<graph>
+		@views.html.navigation.navbar.render()
+
+		<component data-command="cat"></component>
+	</graph>
+		</div>
+</div>
+}

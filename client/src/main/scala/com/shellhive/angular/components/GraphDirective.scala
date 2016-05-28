@@ -1,16 +1,15 @@
 package com.shellhive.angular.components
-import biz.enef.angulate._
 
-import biz.enef.angulate.core.Attributes
-import biz.enef.angulate.core.Timeout
-import biz.enef.angulate.core.JQLite
-import scalajs.js
+import biz.enef.angulate._
+import biz.enef.angulate.core.{Attributes, JQLite, Timeout}
 import org.scalajs.jquery._
+
+import scala.scalajs.js
 
 /**
  * @author Omar Castro <omar-a-castro@telecom.pt>, 08-05-2016.
  */
-class TipDirective($timeout: Timeout) extends Directive {
+class GraphDirective($timeout: Timeout) extends Directive {
 
 
 
@@ -18,7 +17,7 @@ class TipDirective($timeout: Timeout) extends Directive {
   override type ScopeType = js.Dynamic
 
   // the type of the controller instance passed to postLink() and controller()
-  override val restrict = "C"
+  override val restrict = "E"
 
   override val scope = true
   // -- or --
@@ -36,26 +35,14 @@ class TipDirective($timeout: Timeout) extends Directive {
                         attrs: Attributes,
                         controller: ControllerType) = {
 
-    val jqueryElement = element.asInstanceOf[JQuery]
+    element.addClass("graph workspace")
 
+    scope.showTooltip = true
 
-    val hoverIn = (x: JQueryEventObject) => {
-        if(!js.isUndefined(scope.status) && !scope.status.noTooltip.asInstanceOf[Boolean]){
-          scope.showTooltip = true; scope.$digest()
-        }
-        null
-      }
-
-    val hoverOut = (x: JQueryEventObject) => {
-      if(js.typeOf(scope.showTooltip) == "boolean"  && scope.showTooltip.asInstanceOf[Boolean]){
-        scope.showTooltip = false; scope.$digest()
-      }
-      null
+    scope.invertHelp = () => {
+      scope.showTooltip = !scope.showTooltip
+      println("invertHelp")
     }
-
-    jqueryElement.hover(hoverIn,hoverOut)
-
-
 
   }
 

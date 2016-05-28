@@ -10,4 +10,7 @@ class Application()(implicit environment: Environment) extends Controller {
     Ok(views.html.index(SharedMessages.itWorks))
   }
 
+  def graph = Action {
+    Ok(views.html.graph(SharedMessages.itWorks))
+  }
 }

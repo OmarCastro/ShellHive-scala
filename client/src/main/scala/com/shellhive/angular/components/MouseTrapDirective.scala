@@ -1,16 +1,16 @@
 package com.shellhive.angular.components
-import biz.enef.angulate._
 
-import biz.enef.angulate.core.Attributes
-import biz.enef.angulate.core.Timeout
-import biz.enef.angulate.core.JQLite
-import scalajs.js
+import biz.enef.angulate._
+import biz.enef.angulate.core.{Attributes, JQLite, Timeout}
+import com.shellhive.lib.mousetrap.{Mousetrap, MousetrapEvent}
 import org.scalajs.jquery._
+
+import scala.scalajs.js
 
 /**
  * @author Omar Castro <omar-a-castro@telecom.pt>, 08-05-2016.
  */
-class TipDirective($timeout: Timeout) extends Directive {
+class MouseTrapDirective($timeout: Timeout) extends Directive {
 
 
 
@@ -18,7 +18,7 @@ class TipDirective($timeout: Timeout) extends Directive {
   override type ScopeType = js.Dynamic
 
   // the type of the controller instance passed to postLink() and controller()
-  override val restrict = "C"
+  override val restrict = "A"
 
   override val scope = true
   // -- or --
@@ -39,22 +39,17 @@ class TipDirective($timeout: Timeout) extends Directive {
     val jqueryElement = element.asInstanceOf[JQuery]
 
 
-    val hoverIn = (x: JQueryEventObject) => {
-        if(!js.isUndefined(scope.status) && !scope.status.noTooltip.asInstanceOf[Boolean]){
-          scope.showTooltip = true; scope.$digest()
-        }
-        null
-      }
+    val shortcutSeq : String = attrs("mousetrap").getOrElse("")
+    val template : String = shortcutSeq.split('+').map("<kbd>"+_+"</kbd>").mkString("+")
+    jqueryElement.append(s"""<div class="small align-right">$template</div>""")
 
-    val hoverOut = (x: JQueryEventObject) => {
-      if(js.typeOf(scope.showTooltip) == "boolean"  && scope.showTooltip.asInstanceOf[Boolean]){
-        scope.showTooltip = false; scope.$digest()
-      }
-      null
+    val bindShortcut = (x: MousetrapEvent) => {
+      jqueryElement.trigger("click")
+      println("keboard clicked")
+      false
     }
 
-    jqueryElement.hover(hoverIn,hoverOut)
-
+    Mousetrap.bind(shortcutSeq,bindShortcut)
 
 
   }

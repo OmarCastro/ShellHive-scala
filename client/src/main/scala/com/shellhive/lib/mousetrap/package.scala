@@ -1,0 +1,87 @@
+package com.shellhive.lib
+
+package object mousetrap {
+  import scala.scalajs.js
+  import org.scalajs.dom
+
+  type JsAny = js.Any
+  type JsObject = js.Object
+  type JsUndefined = Unit
+  type JsNumber = Double
+  type JsString = String
+  type JsDictionary[T] = js.Dictionary[T]
+  type JsBoolean = Boolean
+  type JsArray[T] = js.Array[T]
+  type JsFunction = js.Function
+  type JsFunction0[T0] = js.Function0[T0]
+  type JsFunction1[T0, T1] = js.Function1[T0, T1]
+  type JsFunction2[T0, T1, T2] = js.Function2[T0, T1, T2]
+  type JsFunction3[T0, T1, T2, T3] = js.Function3[T0, T1, T2, T3]
+  type JsFunction4[T0, T1, T2, T3, T4] = js.Function4[T0, T1, T2, T3, T4]
+  type JsFunction5[T0, T1, T2, T3, T4, T5] = js.Function5[T0, T1, T2, T3, T4, T5]
+  type JsDynamic = js.Dynamic
+
+  type DomEvent = dom.Event
+  type HTMLElement = dom.html.Element
+
+  val undefined : JsUndefined = ()
+  val document = dom.document
+  val window = dom.window
+  val console = dom.console
+
+  val JsObject = js.Object
+  val JsArray = js.Array
+
+  val obj = js.Dynamic.literal
+
+  def array[T](o : T*) : js.Array[T] = js.Array[T](o : _*)
+  def arraySeq[T](o : Seq[T]) : js.Array[T] = js.Array[T](o : _*)
+  def emptyArray = js.Array()
+
+  def fun[T0](x : Function0[T0]) : js.Function = x
+  def fun[T0, T1](x : Function1[T0, T1]) : js.Function = x
+  def fun[T0, T1, T2](x : Function2[T0, T1, T2]) : js.Function = x
+  def fun[T0, T1, T2, T3](x : Function3[T0, T1, T2, T3]) : js.Function = x
+  def fun[T0, T1, T2, T3, T4](x : Function4[T0, T1, T2, T3, T4]) : js.Function = x
+  def fun[T0, T1, T2, T3, T4, T5](x : Function5[T0, T1, T2, T3, T4, T5]) : js.Function = x
+
+  def fun0[T0](x : Function0[T0]) : js.Function0[T0] = x
+  def fun1[T0, T1](x : Function1[T0, T1]) : js.Function1[T0, T1] = x
+  def fun2[T0, T1, T2](x : Function2[T0, T1, T2]) : js.Function2[T0, T1, T2] = x
+  def fun3[T0, T1, T2, T3](x : Function3[T0, T1, T2, T3]) : js.Function3[T0, T1, T2, T3] = x
+  def fun4[T0, T1, T2, T3, T4](x : Function4[T0, T1, T2, T3, T4]) : js.Function4[T0, T1, T2, T3, T4] = x
+  def fun5[T0, T1, T2, T3, T4, T5](x : Function5[T0, T1, T2, T3, T4, T5]) : js.Function5[T0, T1, T2, T3, T4, T5] = x
+
+  implicit class IsUndefJs(val o : JsAny) extends AnyVal {
+    def isUndef = o.isInstanceOf[JsUndefined] || o == null
+  }
+
+  implicit class IsUndef(val o : Any) extends AnyVal {
+    def isUndef = o.isInstanceOf[JsUndefined] || o == null
+  }
+
+  trait RichNode extends dom.Node {
+    override def parentNode : RichNode = scala.scalajs.js.native
+    def getElementsByClassName(className : String) : dom.html.Collection = scala.scalajs.js.native
+  }
+
+  implicit class DynamicNode(val o : org.scalajs.dom.Node) extends AnyVal {
+    def style : js.Dynamic = o.asInstanceOf[js.Dynamic].style
+  }
+
+  implicit class Dynamic(val o : Any) extends AnyVal {
+    def dyn : js.Dynamic = o.asInstanceOf[js.Dynamic]
+  }
+
+  implicit class StorageHelper(val o : org.scalajs.dom.Storage) extends AnyVal {
+    def apply(key : String) : String = o.getItem(key)
+    def update(key : String, value : String) = o.setItem(key, value)
+    def update(key : String, value : Boolean) = o.setItem(key, value.toString)
+    def update(key : String, value : Int) = o.setItem(key, value.toString)
+  }
+
+  trait JsConvertable[T] {
+    def to(x : T) : JsAny
+    def from(x : JsAny) : T
+  }
+}

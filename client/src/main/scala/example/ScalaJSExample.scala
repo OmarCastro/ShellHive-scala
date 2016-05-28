@@ -1,30 +1,33 @@
 package example
 
-import com.shellhive.angular.components.{TipDirective, CommandComponent}
+import com.shellhive.angular.components.{ComponentDirective, GraphDirective, MouseTrapDirective, TipDirective}
 
 import scala.scalajs.js
 import org.scalajs.dom
 import shared.SharedMessages
 import shared.bash.parser.BashParser
 import fastparse.all.Parsed
+
 import scalatags.JsDom.all._
 import biz.enef.angulate._
 
 object ScalaJSExample extends js.JSApp {
   def main(): Unit = {
-    val textInput:dom.html.Input = dom.document.getElementById("parserOutput").asInstanceOf[dom.html.Input];
+    //val textInput:dom.html.Input = dom.document.getElementById("parserOutput").asInstanceOf[dom.html.Input];
     
-    dom.document.getElementById("scalajsShoutOut").textContent = SharedMessages.itWorks
-    textInput.oninput = (event: dom.Event) => {
-      parseBash(textInput.value,dom.document.getElementById("parserShoutOut"))
-    }
-    parseBash("teste >(asd)",dom.document.getElementById("parserShoutOut"))
+    //dom.document.getElementById("scalajsShoutOut").textContent = SharedMessages.itWorks
+    //textInput.oninput = (event: dom.Event) => {
+    //  parseBash(textInput.value,dom.document.getElementById("parserShoutOut"))
+    //}
+    //parseBash("teste >(asd)",dom.document.getElementById("parserShoutOut"))
     
   }
 
   val module = angular.createModule("foo")
-  module.componentOf[CommandComponent]
-  module.directiveOf[TipDirective]
+  module.directiveOf[ComponentDirective]("component")
+  module.directiveOf[TipDirective]("tip")
+  module.directiveOf[GraphDirective]("graph")
+  module.directiveOf[MouseTrapDirective]("mousetrap")
 
   val spanElems: dom.NodeList = dom.document.querySelectorAll(".parse-test")
 

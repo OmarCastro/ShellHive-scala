@@ -1,6 +1,6 @@
 package shared.bash
 
-import shared.bash.commands.CatCommand
+import shared.bash.commands._
 /**
 * @author Omar Castro <omar-a-castro@telecom.pt>, 07-05-2016.
 */
@@ -8,6 +8,7 @@ object Command {
   lazy val commands: collection.mutable.Map[String, CommandBuilder] = {
     val result = collection.mutable.Map[String, CommandBuilder]()
     result.put(CatCommand.commandName,CatCommand)
+    result.put(EchoCommand.commandName,EchoCommand)
     result
   }
 
@@ -40,7 +41,7 @@ abstract class Command(val arguments:Arguments) {
 //        arguments.map((arg: Argument) => p(arg.printArgument))
 //    ).render
 //    elem
-    "<component></component>"
+    s"""<component command="$command"></component>"""
   }
 
 }
