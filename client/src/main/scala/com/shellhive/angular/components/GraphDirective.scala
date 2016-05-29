@@ -7,7 +7,7 @@ import org.scalajs.jquery._
 import scala.scalajs.js
 
 /**
- * @author Omar Castro <omar-a-castro@telecom.pt>, 08-05-2016.
+  * @author Omar Castro <omar.castro.360@gmail.com>, 08-05-2016.
  */
 class GraphDirective($timeout: Timeout) extends Directive {
 
@@ -41,8 +41,13 @@ class GraphDirective($timeout: Timeout) extends Directive {
 
     scope.invertHelp = () => {
       scope.showTooltip = !scope.showTooltip
+      scope.status.noTooltip = !scope.showTooltip
       println("invertHelp")
     }
+
+    scope.status = js.Dictionary(
+      "noTooltip" -> false
+    )
 
   }
 

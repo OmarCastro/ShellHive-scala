@@ -1,6 +1,6 @@
 package example
 
-import com.shellhive.angular.components.{ComponentDirective, GraphDirective, MouseTrapDirective, TipDirective}
+import com.shellhive.angular.components.{GraphDirective, MouseTrapDirective, TipDirective}
 
 import scala.scalajs.js
 import org.scalajs.dom
@@ -10,6 +10,7 @@ import fastparse.all.Parsed
 
 import scalatags.JsDom.all._
 import biz.enef.angulate._
+import com.shellhive.angular.components.nodes.{ComponentDirective, ComponentTitleDirective}
 
 object ScalaJSExample extends js.JSApp {
   def main(): Unit = {
@@ -28,6 +29,7 @@ object ScalaJSExample extends js.JSApp {
   module.directiveOf[TipDirective]("tip")
   module.directiveOf[GraphDirective]("graph")
   module.directiveOf[MouseTrapDirective]("mousetrap")
+  module.directiveOf[ComponentTitleDirective]("componentTitle")
 
   val spanElems: dom.NodeList = dom.document.querySelectorAll(".parse-test")
 

@@ -1,15 +1,25 @@
-package com.shellhive.angular.components
+package com.shellhive.angular.components.nodes
 
 import biz.enef.angulate._
 import biz.enef.angulate.core.{Attributes, JQLite, Timeout}
+import com.shellhive.components.Icon
 import org.scalajs.dom
 import org.scalajs.dom.raw.MouseEvent
 import org.scalajs.jquery._
+import shared.i18n.I18n
 
 import scala.scalajs.js
 
 /**
- * @author Omar Castro <omar-a-castro@telecom.pt>, 08-05-2016.
+ * @author Omar Castro <omar.castro.360@gmail.com>, 08-05-2016.
+  *
+  * Component Directive
+  *
+  * a visual representation of the calling command
+  *
+  * Usage:
+  *   <component data-command="command name"><component>
+  *
  */
 class ComponentDirective($timeout: Timeout) extends Directive {
 
@@ -24,19 +34,11 @@ class ComponentDirective($timeout: Timeout) extends Directive {
   override val scope = true
 
 
-  override val template =
-    """
-      |  <div class="tip title" touch-action="none">
-      |    <div class="tooltip" ng-if="showTooltip" ng-style="{transform:'translate(-50%) scale('+(1/transformScale())+')'}"> Drag me to move me! </div>
-      |    <span class="title-name" ng-bind="title.name"></span>
-      |    <span class="button-group" ng-if="title.buttons">
-      |      <a ng-click="togglecollapse()" class="glyphicon"
-      |         ng-class="(collapsed)?'glyphicon-chevron-up':'glyphicon-chevron-down'">
-      |      </a>
-      |      <a ng-click="$emit('removeComponent', data.id)" class="close-button glyphicon glyphicon-remove"></a>
-      |  </div>
-      |  <div ng-transclude></div>
+  override val template = """
+      |<div class="tip title" data-component-title touch-action="none"></div>
+      |<div data-ng-transclude>
     """.stripMargin
+
 
   override def transclude = true
 
@@ -60,8 +62,8 @@ class ComponentDirective($timeout: Timeout) extends Directive {
     jqueryElement.addClass("component")
 
 
-    var translateX:Double = 0
-    var translateY:Double = 0
+    var translateX:Double = attrs("posX").getOrElse("0").toDouble
+    var translateY:Double = attrs("posY").getOrElse("0").toDouble
 
     def updateTransform() = {
       jqueryElement.attr("style", s"transform: translate(${translateX}px,${translateY}px)")
@@ -70,7 +72,6 @@ class ComponentDirective($timeout: Timeout) extends Directive {
     updateTransform()
 
 
-    scope.showTooltip = false
 
     scope.commandName = attrs("command")
 
@@ -79,9 +80,7 @@ class ComponentDirective($timeout: Timeout) extends Directive {
       "buttons" -> true
     )
 
-    scope.status = js.Dictionary(
-      "noTooltip" -> false
-    )
+
 
     var initX: Double = 0
     var initY: Double = 0
@@ -97,7 +96,6 @@ class ComponentDirective($timeout: Timeout) extends Directive {
       if(jQuery(e.target).parents(".tip").length > 0){
         jQuery(dom.document.body).attr("touch-action","none")
         jQuery(dom.document.body).on("pointermove", (e: MouseEvent) => {
-          println(s"mimi, $translateX, $translateY")
           translateX = initTrX - initX + e.screenX
           translateY = initTrY - initY + e.screenY
           updateTransform()

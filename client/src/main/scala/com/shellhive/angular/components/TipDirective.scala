@@ -8,7 +8,7 @@ import scalajs.js
 import org.scalajs.jquery._
 
 /**
- * @author Omar Castro <omar-a-castro@telecom.pt>, 08-05-2016.
+  * @author Omar Castro <omar.castro.360@gmail.com>, 29-05-2016.
  */
 class TipDirective($timeout: Timeout) extends Directive {
 

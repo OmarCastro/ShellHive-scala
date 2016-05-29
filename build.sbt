@@ -21,6 +21,7 @@ lazy val server = (project in file("server")).settings(
   pipelineStages := Seq(scalaJSProd, gzip),
   resolvers += "scalaz-bintray" at "https://dl.bintray.com/scalaz/releases",
   libraryDependencies ++= Seq(
+    "org.julienrf" %% "play-jsmessages" % "2.0.0",
     "com.vmunier" %% "play-scalajs-scripts" % "0.5.0",
     "org.webjars" % "jquery" % "1.11.1",
     "org.webjars" % "angularjs" % "1.5.5",
@@ -51,7 +52,7 @@ lazy val shared = (crossProject.crossType(CrossType.Pure) in file("shared")).
   	scalaVersion := scalaV,
   	libraryDependencies ++= Seq(
       "com.lihaoyi" %%% "fastparse" % "0.3.7",
-      "com.lihaoyi" %%% "scalatags" % "0.5.3"
+      "com.lihaoyi" %%% "scalatags" % "0.5.5"
 
     )
   ).

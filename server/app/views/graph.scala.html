@@ -3,14 +3,15 @@
 @main("Play with Scala.js") {
 
 
+<graph>
+	@views.html.navigation.navbar.render()
 
 <div ui-layout class="layout">
-	<div class="background">
-	<graph>
-		@views.html.navigation.navbar.render()
-
-		<component data-command="cat"></component>
-	</graph>
+		<div class="background">
+			<component data-command="cat"></component>
 		</div>
+
 </div>
+</graph>
+
 }
