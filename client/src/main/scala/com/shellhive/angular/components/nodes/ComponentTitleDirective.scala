@@ -4,7 +4,7 @@ import biz.enef.angulate.Directive
 import biz.enef.angulate.core.{Attributes, JQLite}
 import com.shellhive.components.Icon
 import org.scalajs.jquery.{JQuery, JQueryEventObject}
-import shared.i18n.I18n
+import com.shellhive.i18n._
 
 import scala.scalajs.js
 
@@ -26,7 +26,7 @@ class ComponentTitleDirective  extends Directive  {
 
     val tooltip = div(cls := "tooltip", "ng-if".attr := "showTooltip",
       "ng-style".attr := "{transform:'translate(-50%) scale('+(1/transformScale())+')'}")(
-      I18n.angular.component.title.tooltip.key
+      i18n.angular.component.title.tooltip.translate("pt")
     )
 
     val titleName = span(cls:="title-name", "ng-bind".attr := "title.name")

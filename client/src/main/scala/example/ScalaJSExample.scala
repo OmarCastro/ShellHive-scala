@@ -5,6 +5,7 @@ import com.shellhive.angular.components.{GraphDirective, MouseTrapDirective, Tip
 import scala.scalajs.js
 import org.scalajs.dom
 import shared.SharedMessages
+import com.shellhive.i18n._
 import shared.bash.parser.BashParser
 import fastparse.all.Parsed
 
@@ -42,6 +43,8 @@ object ScalaJSExample extends js.JSApp {
     parseBash(commandLine,result)
 
   })
+
+  println(i18n.angular.component.title.tooltip.translate("pt"))
 
 
 

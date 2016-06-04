@@ -104,8 +104,7 @@ class ComponentDirective($timeout: Timeout) extends Directive {
         })
 
         jQuery(dom.document.body).on("pointerup", (e: MouseEvent) => {
-          jQuery(dom.document.body).off("pointermove")
-          jQuery(dom.document.body).off("pointerup")
+          jQuery(dom.document.body).off("pointermove").off("pointerup")
           jQuery(dom.document.body).attr("touch-action",null)
 
         })

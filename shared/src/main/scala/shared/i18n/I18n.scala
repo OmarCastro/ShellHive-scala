@@ -2,31 +2,24 @@ package shared.i18n
 
 
 /**
-  * Created by Omar Castro on 29/05/2016.
+  * Provides type-safe access to i18n keys on both the server and client
   */
-class I18n (val key: String)
-
 object I18n {
-
-  class I18nKey(protected val prefix: String){
-    def this(i18nKey:I18nKey, postfix: String) = this(i18nKey.prefix+"."+postfix)
-    def apply(key: String): I18n = I18n(prefix+"."+key)
-  }
-
-  private def apply(key: String): I18n = new I18n(key)
-
-  val angular_component_title_tooltip = I18n("angular.component.title.tooltip")
-
-  object angular extends I18nKey("angular"){
-
-    object component extends I18nKey(angular,"component"){
-
-      object title extends I18nKey(component,"titile"){
-
-        val tooltip = apply("tooltip")
+  object angular extends I18nKey{
+    object component extends I18nKey(angular){
+      object title extends I18nKey(component){
+        def tooltip = apply("tooltip")
       }
     }
   }
+}
+
+class I18n (val key: String)
+
+class I18nKey{
+  private var prefix: String = this.getClass.getName.split("\\$").last
+  def this(i18nKey:I18nKey) = {this(); this.prefix =s"${i18nKey.prefix}.$prefix"}
+  def apply(key: => String): I18n = new I18n(s"$prefix.$key")
 }
 
 
