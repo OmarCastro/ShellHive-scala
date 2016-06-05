@@ -1,1 +1,3 @@
 angular.component.title.tooltip = Para mover, pressiona o botao esquero e mova o rato sem largar
+
+shellhive.graph.navbar.command.help = Mostra uma lista de comandos para criação de componentes, para criar, seleccione da lista o componente que deseja criar, ou preferencialmente arrastar uma ligação para um espaço vazio

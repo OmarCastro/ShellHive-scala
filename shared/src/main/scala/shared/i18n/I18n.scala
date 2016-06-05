@@ -12,6 +12,17 @@ object I18n {
       }
     }
   }
+
+  object shellhive extends I18nKey{
+    object graph extends I18nKey(shellhive){
+      object navbar extends I18nKey(graph){
+        object command extends I18nKey(navbar){
+          def help = apply("help")
+        }
+      }
+    }
+  }
+
 }
 
 class I18n (val key: String)

@@ -1,1 +1,2 @@
-angular.component.title.tooltip = "To move it press the button and move it"
+angular.component.title.tooltip = To move it press the button and move it
+shellhive.graph.navbar.command.help = Show a list of supported commands for create, to create a command component select on the component you want to create, or rather drag a component connector to an empty area

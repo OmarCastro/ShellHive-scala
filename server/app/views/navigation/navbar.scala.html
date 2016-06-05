@@ -13,21 +13,9 @@
         <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
                 @views.html.navigation.items.macroitem.render()
+                @views.html.navigation.items.commandsItem.render()
 
-                <li class="dropdown" is-open="status.isopen">
 
-
-                    <a href="#" data-toggle="dropdown" class="tip bottom dropdown-toggle">
-                        <div class="tooltip" ng-if="showTooltip">To create command components, prefer dragging a component connector to an empty area</div>
-                        Add Command
-                        <b class="caret"></b>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li ng-repeat="command in implementedCommands">
-                            <a ng-click="newCommandAtTopLeft(command); status.isopen=false;" ng-bind="command"></a>
-                        </li>
-                    </ul>
-                </li>
 
 
 
