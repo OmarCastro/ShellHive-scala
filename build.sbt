@@ -25,6 +25,8 @@ lazy val server = (project in file("server")).settings(
     "com.vmunier" %% "play-scalajs-scripts" % "0.5.0",
     "org.webjars" % "jquery" % "1.11.1",
     "org.webjars" % "angularjs" % "1.5.5",
+    "org.webjars" % "bootstrap" % "3.3.6",
+    "org.webjars" % "mousetrap" % "1.5.3-1",
     specs2 % Test
   ),
   // Heroku specific
@@ -52,8 +54,8 @@ lazy val shared = (crossProject.crossType(CrossType.Pure) in file("shared")).
   	scalaVersion := scalaV,
   	libraryDependencies ++= Seq(
       "com.lihaoyi" %%% "fastparse" % "0.3.7",
-      "com.lihaoyi" %%% "scalatags" % "0.5.5"
-
+      "com.lihaoyi" %%% "scalatags" % "0.5.5",
+      "com.lihaoyi" %%% "upickle" % "0.4.1"
     )
   ).
   jsConfigure(_ enablePlugins ScalaJSPlay)

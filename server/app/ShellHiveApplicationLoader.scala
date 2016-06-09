@@ -1,4 +1,4 @@
-import controllers.{Application, Assets}
+import controllers.{WebSocketCtrl, Application, Assets}
 import jsmessages.JsMessagesFactoryComponents
 import play.api.ApplicationLoader.Context
 import play.api.i18n.I18nComponents
@@ -10,9 +10,10 @@ class ShellHiveApplicationLoader() extends ApplicationLoader {
   def load(context: Context) = new ApplicationComponents(context).application
 }
 
-class ApplicationComponents(context: Context) extends BuiltInComponentsFromContext(context) with I18nComponents with JsMessagesFactoryComponents {
+class ApplicationComponents(context: Context) extends BuiltInComponentsFromContext(context) with I18nComponents with JsMessagesFactoryComponents{
   i18nMessages.messageApi = messagesApi;
   lazy val applicationController = new Application()(environment, jsMessagesFactory, messagesApi)
+  lazy val webSocketCtrl = new WebSocketCtrl()(actorSystem, materializer)
   lazy val assets = new Assets(httpErrorHandler)
-  override lazy val router = new Routes(httpErrorHandler, applicationController, assets)
+  override lazy val router = new Routes(httpErrorHandler, applicationController, assets, webSocketCtrl)
 }

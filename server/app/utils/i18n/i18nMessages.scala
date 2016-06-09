@@ -9,7 +9,7 @@ import play.api.i18n.{Lang, MessagesApi, Messages}
 object i18nMessages {
   var messageApi:  MessagesApi = null
 
-  private def getLang: Lang = {
+  def getLang(): Lang = {
     var lang: Lang = null
     if (play.mvc.Http.Context.current.get != null) {
       lang = play.mvc.Http.Context.current.get().lang()

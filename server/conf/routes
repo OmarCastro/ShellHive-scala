@@ -11,4 +11,6 @@ GET     /assets/*file               controllers.Assets.at(path="/public", file)
 GET     /reports                    controllers.Application.index
 GET     /graph                      controllers.Application.graph
 
-GET     /i18n.js                       controllers.Application.jsMessages
+GET     /i18n                    controllers.Application.jsMessages
+GET     /javascriptRoutes      controllers.Application.javascriptRoutes
+GET     /ws                     controllers.WebSocketCtrl.socket
