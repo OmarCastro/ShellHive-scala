@@ -23,6 +23,9 @@ lazy val server = (project in file("server")).settings(
   libraryDependencies ++= Seq(
     "org.julienrf" %% "play-jsmessages" % "2.0.0",
     "com.vmunier" %% "play-scalajs-scripts" % "0.5.0",
+    "com.typesafe.play" %% "play-slick" % "2.0.0",
+    "com.typesafe.play" %% "play-slick-evolutions" % "2.0.0",
+    "com.h2database" % "h2" % "1.4.192",
     "org.webjars" % "jquery" % "1.11.1",
     "org.webjars" % "angularjs" % "1.5.5",
     "org.webjars" % "bootstrap" % "3.3.6",
@@ -53,6 +56,7 @@ lazy val shared = (crossProject.crossType(CrossType.Pure) in file("shared")).
   settings(
   	scalaVersion := scalaV,
   	libraryDependencies ++= Seq(
+      "com.lihaoyi" %%% "autowire" % "0.2.5",
       "com.lihaoyi" %%% "fastparse" % "0.3.7",
       "com.lihaoyi" %%% "scalatags" % "0.5.5",
       "com.lihaoyi" %%% "upickle" % "0.4.1"
