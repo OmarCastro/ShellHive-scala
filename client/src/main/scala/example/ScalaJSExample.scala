@@ -45,7 +45,7 @@ object ScalaJSExample extends js.JSApp {
   val spanElems: dom.NodeList = dom.document.querySelectorAll(".parse-test")
 
 
-  println(i18n.angular.component.title.tooltip.translate("pt"))
+  println(i18n.help.componentMove.tooltip.translate("pt"))
   
   def parseBash(text:String, elem: dom.Element) = {
     elem.textContent = {

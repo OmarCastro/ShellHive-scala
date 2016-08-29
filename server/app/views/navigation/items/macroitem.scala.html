@@ -1,12 +1,10 @@
-<li class="dropdown">
-    <a href="#" data-toggle="dropdown" class="tip bottom left dropdown-toggle" is-open="true">
-        <div class="tooltip" ng-if="showTooltip">Here you create and edit macros</div>
-        Macro <b class="caret"></b>
-    </a>
-    <ul class="dropdown-menu">
-        <li><a mousetrap="Shift+M" ng-click="newMacroModal()">New Macro</a></li>
-        <li class="divider"></li>
-        <li class="dropdown-header">created Macros</li>
-        <li ng-repeat="macro in graphModel.macroList"><a ng-bind="macro" ng-click="; status.macroDropdown = false; macroEditModal(macro)"></a></li>
-    </ul>
-</li>
+@import utils.i18n._
+@import views.html.components.dropdownNavigationItem
+@dropdownNavigationItem("Macros", i18n.help.navMenu.macros, "left"){
+    <li><a mousetrap="Shift+M" ng-click="newMacroModal()">New Macro</a></li>
+    <li class="divider"></li>
+    <li class="dropdown-header">created Macros</li>
+    <li ng-repeat="macro in graphModel.macroList">
+        <a ng-bind="macro" ng-click="; status.macroDropdown = false; macroEditModal(macro)"></a>
+    </li>
+}

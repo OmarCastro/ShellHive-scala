@@ -1,13 +1,7 @@
 @import utils.i18n._
-<li class="dropdown" is-open="status.isopen">
-    <a href="#" data-toggle="dropdown" class="tip bottom dropdown-toggle">
-        <div class="tooltip" ng-if="showTooltip">@{i18n.shellhive.graph.navbar.command.help.translate}</div>
-        Add Command
-        <b class="caret"></b>
-    </a>
-    <ul class="dropdown-menu">
-        <li ng-repeat="command in implementedCommands">
-            <a ng-click="newCommandAtTopLeft(command); status.isopen=false;" ng-bind="command"></a>
-        </li>
-    </ul>
-</li>
+@import views.html.components.dropdownNavigationItem
+@dropdownNavigationItem("Add Command", i18n.help.navMenu.command){
+    <li ng-repeat="command in implementedCommands">
+        <a ng-click="newCommandAtTopLeft(command); status.isopen=false;" ng-bind="command"></a>
+    </li>
+}

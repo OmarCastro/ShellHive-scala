@@ -28,6 +28,6 @@ object i18nMessages {
 class i18nMessages(val key: String){
   import i18nMessages._
 
-  def translate(): String = getMessages(getLang)(key)
+  def translate(): String = getMessages(getLang())(key)
 }
 

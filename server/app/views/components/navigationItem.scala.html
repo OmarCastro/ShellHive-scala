@@ -1,0 +1,10 @@
+@import utils.i18n._
+@(name: String, helpTooltip: i18nMessages)(dropdownHtml: Html)
+<li class="dropdown">
+    <a href="#" data-toggle="dropdown" class="tip bottom left dropdown-toggle" is-open="true">
+        <div class="tooltip" ng-if="showTooltip">@{helpTooltip.translate}</div>
+        @name
+        <b class="caret"></b>
+    </a>
+    @dropdownHtml
+</li>

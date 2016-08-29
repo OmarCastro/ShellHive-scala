@@ -1,0 +1,7 @@
+@import utils.i18n._
+@import views.html.components.dropdownNavigationItem
+@dropdownNavigationItem("Action", i18n.help.navMenu.actions,"","status.isopen3"){
+<li><a mousetrap="Ctrl+Shift+up" ng-click="status.filesystSem = false; collapseAll(); status.isopen3=false">Collapse all components</a></li>
+<li><a mousetrap="Ctrl+Shift+down" ng-click="status.filesystem = false; uncollapseAll(); status.isopen3=false;">Uncollapse all components</a></li>
+<li><a mousetrap="command+h" ng-click="invertHelp(); status.isopen3=false;">{{status.noTooltip ? "Show": "Hide"}} helpfull tooltips</a></li>
+}

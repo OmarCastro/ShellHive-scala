@@ -9,7 +9,9 @@ import scala.scalajs.js
 
 /**
   * @author Omar Castro <omar.castro.360@gmail.com>, 29-05-2016.
- */
+  *
+  *
+  */
 class MouseTrapDirective($timeout: Timeout) extends Directive {
 
 
@@ -37,7 +39,6 @@ class MouseTrapDirective($timeout: Timeout) extends Directive {
                         controller: ControllerType) = {
 
     val jqueryElement = element.asInstanceOf[JQuery]
-
 
     val shortcutSeq : String = attrs("mousetrap").getOrElse("")
     val template : String = shortcutSeq.split('+').map("<kbd>"+_+"</kbd>").mkString("+")

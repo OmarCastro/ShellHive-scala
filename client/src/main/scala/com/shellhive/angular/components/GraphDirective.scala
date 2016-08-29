@@ -5,16 +5,24 @@ import biz.enef.angulate.core.{Attributes, JQLite, Timeout}
 import org.scalajs.jquery._
 
 import scala.scalajs.js
+import scala.scalajs.js.annotation.JSExport
+
+object GraphDirective {
+  trait DirectiveScope extends Scope {
+    var showTooltip: Boolean
+    @JSExport
+    var invertHelp: js.Function
+    var status: js.Dictionary[js.Any]
+  }
+}
+
 
 /**
   * @author Omar Castro <omar.castro.360@gmail.com>, 08-05-2016.
  */
 class GraphDirective($timeout: Timeout) extends Directive {
-
-
-
   // the type of the scope object passed to postLink() and controller()
-  override type ScopeType = js.Dynamic
+  override type ScopeType = GraphDirective.DirectiveScope
 
   // the type of the controller instance passed to postLink() and controller()
   override val restrict = "E"
@@ -39,15 +47,18 @@ class GraphDirective($timeout: Timeout) extends Directive {
 
     scope.showTooltip = true
 
-    scope.invertHelp = () => {
-      scope.showTooltip = !scope.showTooltip
-      scope.status.noTooltip = !scope.showTooltip
-      println("invertHelp")
-    }
-
     scope.status = js.Dictionary(
       "noTooltip" -> false
     )
+
+
+    scope.invertHelp = () => {
+      scope.showTooltip = !scope.showTooltip
+      scope.status.update("noTooltip",!scope.showTooltip)
+      element.toggleClass("help-off", !scope.showTooltip)
+      println("invertHelp")
+    }
+
 
   }
 

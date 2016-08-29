@@ -1,2 +1,5 @@
-angular.component.title.tooltip = To move it press the button and move it
-shellhive.graph.navbar.command.help = Show a list of supported commands for create, to create a command component select on the component you want to create, or rather drag a component connector to an empty area
+help.componentMove.tooltip = To move it hold left mouse button and move it
+help.navMenu.command = Shows a list of supported commands for create, to create a command component select on the component you want to create, or rather drag a component connector to an empty area
+help.navMenu.macros = Shows a list of created macros, macros are a grouped components that allows the creation of new commands allowing the reuse of components
+help.navMenu.view =  Here you can view macros and other graphs, hide or show the console.
+help.navMenu.actions = Here you can do extra actions, for now you can collapse components and hide the tooltips.

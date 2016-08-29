@@ -1,3 +1,5 @@
-angular.component.title.tooltip = Para mover, pressiona o botao esquero e mova o rato sem largar
-
-shellhive.graph.navbar.command.help = Mostra uma lista de comandos para criação de componentes, para criar, seleccione da lista o componente que deseja criar, ou preferencialmente arrastar uma ligação para um espaço vazio
+help.componentMove.tooltip = Para mover, pressiona o botao esquero e mova o rato sem largar
+help.navMenu.command = Mostra uma lista de comandos para criação de componentes, para criar, seleccione da lista o componente que deseja criar, ou preferencialmente arrastar uma ligação para um espaço vazio
+help.navMenu.macros = Mostra a lista de macros criadas, macro é um conjunto de componentes agrupados que permite a criação de novos comandos, permitindo a sua reutilização
+help.navMenu.view = Ver outras janelas como também configurar macros
+help.navMenu.actions = Acções adicionais como colapsar os componentes
