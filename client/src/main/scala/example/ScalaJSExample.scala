@@ -24,7 +24,19 @@ object ScalaJSExample extends js.JSApp {
 
     socket.onopen = (event: Event) => {
       println("open")
-      util.WebSocketsAutowireClient(socket)[Api].doThing(3,"mimi").call().onComplete((result) => {
+      val cli = util.WebSocketsAutowireClient(socket)[Api];
+
+      cli.doThing(3,"mimi").call().onComplete((result) => {
+        println("done")
+        println(result)
+      })
+
+      cli.doThing(3,"mimi").call().onComplete((result) => {
+        println("done")
+        println(result)
+      })
+
+      cli.doThing(3,"mimi").call().onComplete((result) => {
         println("done")
         println(result)
       })

@@ -1,7 +1,7 @@
 @import utils.i18n._
 @(name: String, helpTooltip: i18nMessages, additionalClasses: String = "", isOpen: String = null)(dropdownHtml: Html)
 <li class="dropdown">
-    <a href="#" data-toggle="dropdown" class="tip bottom dropdown-toggle @additionalClasses" @if(isOpen != null){data-is-open="@isOpenw"}>
+    <a href="#" data-toggle="dropdown" class="tip bottom dropdown-toggle @additionalClasses" @if(isOpen != null){data-is-open="@isOpen"}>
         <div class="tooltip">@{helpTooltip.translate}</div>
         @name
         <b class="caret"></b>

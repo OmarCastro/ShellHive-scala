@@ -9,7 +9,7 @@ import play.api.mvc._
 import play.api.libs.streams._
 import autowire._
 import upickle.default._
-import shared.api.{Api, WSReqWithResponse, WSResponse}
+import shared.api.{Api, WSRequest, WSResponse}
 
 import scala.concurrent.ExecutionContext.Implicits.global
 
@@ -38,7 +38,7 @@ object MyWebSocketActor {
 class MyWebSocketActor(out: ActorRef) extends Actor {
   def receive = {
     case msg: String =>
-      val request = upickle.default.read[WSReqWithResponse[MyServerApi.Request]](msg)
+      val request = upickle.default.read[WSRequest[MyServerApi.Request]](msg)
       MyServerApi.routes.apply(request.data).foreach((value) => out ! upickle.default.write(WSResponse(request.requestId,value)))
   }
 }
